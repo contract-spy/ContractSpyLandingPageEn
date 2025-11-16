@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ContractSpy – Verträge automatisch prüfen</title>
+  <meta name="description" content="KI-gestützte Vertragsprüfung: Risiken erkennen, Zusammenfassungen erstellen, schneller entscheiden." />
+  <style>
+    :root{
+      --brand:#11a777;
+      --brand-hover:#0f8f66;
+      --bg:#f6f8fb;
+      --surface:#fff;
+      --text:#111;
+      --muted:#5d6269;
+      --line:rgba(0,0,0,.1);
+      --radius:16px;
+      --shadow:0 6px 24px rgba(15,23,42,.06);
+      --max:940px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* === Header === */
+    header{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+    .head{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 0;               /* padding ohne seitliche Gutter – die kommen über margin-inline weiter unten */
+      display:flex;align-items:center;gap:10px
+    }
+    .head img{width:40px;height:40px;border-radius:10px}
+    .head h1{margin:0;font-weight:800;font-size:22px;letter-spacing:-.01em}
+
+    /* === Hero === */
+    .hero{
+      max-width:var(--max);
+      margin:48px auto 0;           /* zentriert auf groß */
+      padding:0;                     /* Innenpadding lassen wir über Text regeln */
+    }
+    .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+    .hero h2{margin:10px 0;font-size:clamp(30px,4vw,46px);line-height:1.15;font-weight:800}
+    .hero p{margin:0 0 28px;color:var(--muted);font-size:17px;max-width:700px}
+
+    /* === Cards === */
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      max-width:var(--max);
+      margin:0 auto 26px;           /* zentriert auf groß */
+      padding:32px 28px;
+    }
+    .card h3{margin:0 0 12px;font-size:22px}
+    .text{font-size:17px;line-height:1.6;color:#1a1a1a}
+
+    /* === GUTTERS auf schmalen Screens (fix) === */
+    /* geben Hero, Cards, Footer und Header-Inhalt echte Außenabstände */
+    @media (max-width: 1020px){
+      .hero,
+      .card,
+      footer,
+      .head{
+        margin-inline: clamp(14px, 5vw, 28px);
+      }
+    }
+
+    /* === Button === */
+    .btn{
+      display:inline-block;background:var(--brand);color:#fff;font-weight:700;border:none;border-radius:12px;padding:13px 20px;
+      cursor:pointer;text-decoration:none;transition:background .2s ease
+    }
+    .btn:hover{background:var(--brand-hover)}
+    .btn.block{width:100%;text-align:center}
+    @media(min-width:640px){.btn.block{width:auto}}
+
+    /* === Form === */
+    form{display:grid;gap:18px}
+    .row-2{display:grid;gap:14px;grid-template-columns:1fr}
+    @media(min-width:720px){.row-2{grid-template-columns:1fr 1fr}}
+
+    label{font-size:14px;font-weight:600}
+    input,select,textarea{
+      width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:12px;font-size:15px;background:#fff;font-family:inherit
+    }
+    textarea{min-height:110px;resize:vertical}
+
+    fieldset{margin:0;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+    legend{font-weight:700;color:#1a1a1a}
+    .options{display:grid;gap:10px;grid-template-columns:1fr}
+    @media(min-width:640px){.options{grid-template-columns:1fr 1fr}}
+    .option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .option input[type="checkbox"]{width:18px;height:18px;accent-color:var(--brand)}
+
+    .consent{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;color:var(--muted);font-size:14px}
+    .muted{color:var(--muted);font-size:14px}
+    .ok{color:var(--brand)}.err{color:#c94d4d}
+
+    footer{
+      max-width:var(--max);
+      margin:40px auto 0;           /* zentriert auf groß; Mobile-Gutter kommt über Media Query */
+      padding:20px 0;
+      border-top:1px solid var(--line);
+      text-align:center;color:var(--muted);font-size:13px;background:var(--surface);border-radius:12px 12px 0 0
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="head">
+      <img src="./assets/contractspy-logo.svg" alt="ContractSpy Logo">
+      <h1>ContractSpy</h1>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="badge">Early Access</span>
+    <h2>Legal Agent für schnelle und datenschutzkonforme Vertragsprüfung</h2>
+    <p>Verträge hochladen, klar verstehen, Risiken erkennen – ContractSpy bringt juristische Präzision in verständlichen Klartext.</p>
+  </section>
+
+  <section class="card">
+    <h3>Worum es geht</h3>
+    <p class="text">
+      ContractSpy analysiert Verträge automatisch und hebt die Punkte hervor, die wirklich zählen:
+      Kosten, Laufzeiten, Kündigungsfristen und rechtliche Risiken. Du erhältst kompakte
+      Zusammenfassungen und konkrete To-dos – schnell, verständlich und datenschutzkonform.
+    </p>
+    <a class="btn" href="https://contractspy.github.io/ContractSpyDemo/">Zur Demo</a>
+  </section>
+
+  <section class="card">
+    <h3>Interesse? Nenne uns deine Anforderungen</h3>
+    <form id="leadForm" action="https://formspree.io/f/myzbwqby" method="POST" novalidate>
+      <div class="row-2">
+        <div>
+          <label for="name">Name (optional)</label>
+          <input id="name" name="name" placeholder="Max Mustermann" autocomplete="name">
+        </div>
+        <div>
+          <label for="email">E-Mail (optional)</label>
+          <input id="email" name="email" type="email" placeholder="max@beispiel.de" autocomplete="email">
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Was ist für dich besonders relevant?</legend>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="interests[]" value="kfz"> KFZ-Versicherung prüfen &amp; vergleichen</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="mietvertrag"> Mietvertrag &amp; Nebenkosten prüfen</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="handy"> Handy-, Internet- oder Stromverträge analysieren</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="autokauf"> Autokauf- oder Leasingvertrag checken</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label for="feedback">Weitere Anregungen (freiwillig)</label>
+        <textarea id="feedback" name="feedback" placeholder="z. B. Feedback oder Wünsche …"></textarea>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" required>
+        <span>Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
+      </label>
+
+      <button type="submit" class="btn block" id="submitBtn">Absenden</button>
+      <p class="muted" id="formMsg"></p>
+    </form>
+  </section>
+
+  <footer>
+    <span class="tagline">💡 Beta – wir bauen noch</span>
+    <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fcontractspy.github.io%2FContractSpyLandingPage%2F&label=Contract+spy&icon=github&color=%23198754&message=&style=flat&tz=UTC">
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('leadForm');
+    const msg = document.getElementById('formMsg');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async e=>{
+      e.preventDefault();
+      if(!document.getElementById('consent').checked){
+        msg.textContent='Bitte Zustimmung zur Datenverarbeitung geben.';
+        msg.className='muted err';return;
+      }
+      btn.disabled=true;msg.textContent='Sende …';msg.className='muted';
+      try{
+        const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)});
+        if(res.ok){form.reset();msg.textContent='Danke! Wir melden uns bald.';msg.className='muted ok';}
+        else{msg.textContent='Senden fehlgeschlagen. Bitte später erneut versuchen.';msg.className='muted err';}
+      }catch{msg.textContent='Fehler beim Senden.';msg.className='muted err';}
+      btn.disabled=false;
+    });
+  </script>
+</body>
+</html>
