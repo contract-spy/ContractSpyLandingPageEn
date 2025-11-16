@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ContractSpy – Verträge automatisch prüfen</title>
-  <meta name="description" content="KI-gestützte Vertragsprüfung: Risiken erkennen, Zusammenfassungen erstellen, schneller entscheiden." />
+  <title>ContractSpy – Automatically Review Contracts</title>
+  <meta name="description" content="AI-powered contract review: detect risks, create summaries, decide faster." />
   <style>
     :root{
       --brand:#5ECDB7;
@@ -59,7 +59,7 @@
     .video-wrap{display:block;margin-bottom:20px}
     .video-wrap video{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
 
-    /* === GUTTERS auf schmalen Screens === */
+    /* === GUTTERS on narrow screens === */
     @media (max-width: 1020px){
       .hero,
       .card,
@@ -120,64 +120,64 @@
 
   <section class="hero">
     <span class="badge">Early Access</span>
-    <h2>Legal Agent für schnelle und datenschutzkonforme Vertragsprüfung</h2>
-    <p>Verträge hochladen, klar verstehen, Risiken erkennen – ContractSpy bringt juristische Präzision in verständlichen Klartext.</p>
+    <h2>Legal Agent for fast and privacy-compliant contract review</h2>
+    <p>Upload contracts, understand them clearly, detect risks – ContractSpy brings legal precision into plain language.</p>
   </section>
 
-  <!-- Erster Kasten: Video + Demo-Button -->
+  <!-- First card: Video + Demo button -->
   <section class="card">
-    <h3>ContractSpy in 60 Sekunden</h3>
+    <h3>ContractSpy in 60 seconds</h3>
     <div class="video-wrap">
       <video controls preload="metadata" poster="" playsinline>
-        <source src="ContractSpy_Einfaches_und_sicheres_Vertr.mp4" type="video/mp4">
-        Dein Browser unterstützt das Video-Tag nicht.
+        <source src="English_Contract_Spy.mp4" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
     </div>
-    <a class="btn" href="https://contractspy.github.io/ContractSpyDemo/">Zur Demo</a>
+    <a class="btn" href="https://contractspy.github.io/ContractSpyDemo/">Go to Demo</a>
   </section>
 
-  <!-- Formular bleibt -->
+  <!-- Form -->
   <section class="card">
-    <h3>Interesse? Nenne uns deine Anforderungen</h3>
+    <h3>Interested? Tell us your requirements</h3>
     <form id="leadForm" action="https://formspree.io/f/myzbwqby" method="POST" novalidate>
       <div class="row-2">
         <div>
           <label for="name">Name (optional)</label>
-          <input id="name" name="name" placeholder="Max Mustermann" autocomplete="name">
+          <input id="name" name="name" placeholder="John Doe" autocomplete="name">
         </div>
         <div>
-          <label for="email">E-Mail (optional)</label>
-          <input id="email" name="email" type="email" placeholder="max@beispiel.de" autocomplete="email">
+          <label for="email">Email (optional)</label>
+          <input id="email" name="email" type="email" placeholder="john@example.com" autocomplete="email">
         </div>
       </div>
 
       <fieldset>
-        <legend>Was ist für dich besonders relevant?</legend>
+        <legend>What is especially relevant to you?</legend>
         <div class="options">
-          <label class="option"><input type="checkbox" name="interests[]" value="kfz"> KFZ-Versicherung prüfen &amp; vergleichen</label>
-          <label class="option"><input type="checkbox" name="interests[]" value="mietvertrag"> Mietvertrag &amp; Nebenkosten prüfen</label>
-          <label class="option"><input type="checkbox" name="interests[]" value="handy"> Handy-, Internet- oder Stromverträge analysieren</label>
-          <label class="option"><input type="checkbox" name="interests[]" value="autokauf"> Autokauf- oder Leasingvertrag checken</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="kfz"> Review & compare car insurance</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="mietvertrag"> Review rental contracts & utility costs</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="handy"> Analyse phone, internet or electricity contracts</label>
+          <label class="option"><input type="checkbox" name="interests[]" value="autokauf"> Check car purchase or leasing contracts</label>
         </div>
       </fieldset>
 
       <div>
-        <label for="feedback">Weitere Anregungen (freiwillig)</label>
-        <textarea id="feedback" name="feedback" placeholder="z. B. Feedback oder Wünsche …"></textarea>
+        <label for="feedback">Additional thoughts (optional)</label>
+        <textarea id="feedback" name="feedback" placeholder="e.g. feedback or wishes …"></textarea>
       </div>
 
       <label class="consent">
         <input type="checkbox" id="consent" required>
-        <span>Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
+        <span>I agree that my data may be stored for contacting me.</span>
       </label>
 
-      <button type="submit" class="btn block" id="submitBtn">Absenden</button>
+      <button type="submit" class="btn block" id="submitBtn">Submit</button>
       <p class="muted" id="formMsg"></p>
     </form>
   </section>
 
   <footer>
-    <span class="tagline">💡 Beta – wir bauen noch</span>
+    <span class="tagline">💡 Beta – we’re still building</span>
     <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fcontractspy.github.io%2FContractSpyLandingPage%2F&label=Contract+spy&icon=github&color=%23198754&message=&style=flat&tz=UTC" alt="Hits Counter">
   </footer>
 
@@ -192,15 +192,15 @@
     form.addEventListener('submit', async e=>{
       e.preventDefault();
       if(!document.getElementById('consent').checked){
-        msg.textContent='Bitte Zustimmung zur Datenverarbeitung geben.';
+        msg.textContent='Please agree to data processing.';
         msg.className='muted err';return;
       }
-      btn.disabled=true;msg.textContent='Sende …';msg.className='muted';
+      btn.disabled=true;msg.textContent='Sending…';msg.className='muted';
       try{
         const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)});
-        if(res.ok){form.reset();msg.textContent='Danke! Wir melden uns bald.';msg.className='muted ok';}
-        else{msg.textContent='Senden fehlgeschlagen. Bitte später erneut versuchen.';msg.className='muted err';}
-      }catch{msg.textContent='Fehler beim Senden.';msg.className='muted err';}
+        if(res.ok){form.reset();msg.textContent='Thank you! We’ll get back to you soon.';msg.className='muted ok';}
+        else{msg.textContent='Sending failed. Please try again later.';msg.className='muted err';}
+      }catch{msg.textContent='Error while sending.';msg.className='muted err';}
       btn.disabled=false;
     });
   </script>
