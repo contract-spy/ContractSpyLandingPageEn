@@ -192,66 +192,78 @@
     <a class="btn" href="https://contractspy.github.io/ContractSpyDemoEn/">Go to Demo</a>
   </section>
 
- <!-- Pricing Card -->
-<section class="card">
-  <h3>Choose Your ContractSpy Plan</h3>
-  <p class="muted">
-    Start small or secure the full worry-free protection – you can test both plans
-    for 1 month for free and save 50% afterwards.
-  </p>
+  <!-- Pricing Card -->
+  <section class="card">
+    <h3>Choose Your ContractSpy Plan</h3>
+    <p class="muted">
+      Start small or secure the full worry-free protection – you can test both plans
+      for 1 month for free and save 50% afterwards.
+    </p>
 
-  <div class="pricing" aria-label="Subscription plans">
-    <!-- Starter (Basic) -->
-    <article class="plan">
-      <div class="plan-header">
-        <div>
-          <div class="plan-name">Starter <span class="plan-meta">(Basic)</span></div>
-          <div class="plan-tag" style="visibility:hidden;">Placeholder</div>
+    <div class="pricing" aria-label="Subscription plans">
+      <!-- Starter (Basic) -->
+      <article class="plan">
+        <div class="plan-header">
+          <div>
+            <div class="plan-name">Starter <span class="plan-meta">(Basic)</span></div>
+            <div class="plan-tag" style="visibility:hidden;">Placeholder</div>
+          </div>
+          <div class="plan-price">€3.99 <span class="plan-meta">/ month</span></div>
         </div>
-        <div class="plan-price">€3.99 <span class="plan-meta">/ month</span></div>
-      </div>
 
-      <div class="plan-section">
-        <p class="plan-feature">5 Checks &amp; Basic Protection</p>
-        <p class="plan-meta">
-          Perfect if you want to try ContractSpy and keep a few key contracts stored in one place, 
-          neatly organized and reliably checked.
-        </p>
-      </div>
-
-      <div class="plan-section plan-cta">
-        <a class="btn block" href="#leadForm">
-          Request access – test for 1 month for free, then save 50%
-        </a>
-      </div>
-    </article>
-
-    <!-- Sorglos (Premium) -->
-    <article class="plan">
-      <div class="plan-header">
-        <div>
-          <div class="plan-name">Worry-Free <span class="plan-meta">(Premium)</span></div>
-          <div class="plan-tag">Recommended</div>
+        <div class="plan-section">
+          <p class="plan-feature">5 Checks &amp; Basic Protection</p>
+          <p class="plan-meta">
+            Perfect if you want to try ContractSpy and keep a few key contracts stored in one place, 
+            neatly organized and reliably checked.
+          </p>
         </div>
-        <div class="plan-price">€7.99 <span class="plan-meta">/ month</span></div>
-      </div>
 
-      <div class="plan-section">
-        <p class="plan-feature">Unlimited + Deadline Reminder</p>
-        <p class="plan-meta">
-          For anyone who wants to keep all contracts conveniently in one place with automatic reminders 
-          and the ability to request information at any time.
-        </p>
-      </div>
+        <div class="plan-section plan-cta">
+          <!-- Demo button ABOVE -->
+          <a class="btn block" href="#basic-demo">
+            Watch Basic Demo
+          </a>
 
-      <div class="plan-section plan-cta">
-        <a class="btn block" href="#leadForm">
-          Request access – test for 1 month for free, then save 50%
-        </a>
-      </div>
-    </article>
-  </div>
-</section>
+          <!-- Alter Button bleibt, zeigt aber nur Hinweis -->
+          <a class="btn block" href="#leadForm" style="margin-top:10px;">
+            Request access – test for 1 month for free, then save 50%
+          </a>
+        </div>
+      </article>
+
+      <!-- Worry-Free (Premium) -->
+      <article class="plan">
+        <div class="plan-header">
+          <div>
+            <div class="plan-name">Worry-Free <span class="plan-meta">(Premium)</span></div>
+            <div class="plan-tag">Recommended</div>
+          </div>
+          <div class="plan-price">€7.99 <span class="plan-meta">/ month</span></div>
+        </div>
+
+        <div class="plan-section">
+          <p class="plan-feature">Unlimited + Deadline Reminder</p>
+          <p class="plan-meta">
+            For anyone who wants to keep all contracts conveniently in one place with automatic reminders 
+            and the ability to request information at any time.
+          </p>
+        </div>
+
+        <div class="plan-section plan-cta">
+          <!-- Demo button ABOVE -->
+          <a class="btn block" href="#premium-demo">
+            Watch Premium Demo
+          </a>
+
+          <!-- Alter Button bleibt, zeigt aber nur Hinweis -->
+          <a class="btn block" href="#leadForm" style="margin-top:10px;">
+            Request access – test for 1 month for free, then save 50%
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <!-- Form -->
   <section class="card">
@@ -293,6 +305,27 @@
     </form>
   </section>
 
+  <!-- New Video Sections at the bottom -->
+  <section class="card" id="basic-demo">
+    <h3>Basic Demo</h3>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="" playsinline>
+        <source src="Demo_Basic.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <section class="card" id="premium-demo">
+    <h3>Premium Demo</h3>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="" playsinline>
+        <source src="Demo_Premium.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
   <footer>
     <span class="tagline">💡 Beta – we’re still building</span>
     <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fcontractspy.github.io%2FContractSpyLandingPage%2F&label=Contract+spy&icon=github&color=%23198754&message=&style=flat&tz=UTC" alt="Hits Counter">
@@ -316,6 +349,14 @@
         else{msg.textContent='Sending failed. Please try again later.';msg.className='muted err';}
       }catch{msg.textContent='Error while sending.';msg.className='muted err';}
       btn.disabled=false;
+    });
+
+    // Intercept old CTA buttons and show info message
+    document.querySelectorAll('a[href="#leadForm"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        alert("Thanks for your interest! We are still in development.");
+      });
     });
   </script>
 </body>
