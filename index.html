@@ -53,14 +53,70 @@
       padding:32px 28px;
     }
     .card h3{margin:0 0 12px;font-size:22px}
-    .text{font-size:17px;line-height:1.6;color:#1a1a1a}
+
+    /* === Pricing === */
+    .pricing{
+      display:grid;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media(min-width:720px){
+      .pricing{grid-template-columns:1fr 1fr;}
+    }
+    .plan{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 20px;
+      display:flex;
+      flex-direction:column;
+    }
+    .plan-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+    }
+    .plan-name{
+      font-size:18px;
+      font-weight:700;
+    }
+    .plan-tag{
+      font-size:13px;
+      font-weight:600;
+      color:var(--brand);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-top:4px;
+    }
+    .plan-price{
+      font-size:22px;
+      font-weight:800;
+    }
+    .plan-meta{
+      font-size:14px;
+      color:var(--muted);
+    }
+    .plan-feature{
+      font-size:15px;
+      margin:0 0 4px;
+    }
+    .plan-section{
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    .plan-cta{
+      margin-top:10px;
+    }
 
     /* === Video === */
     .video-wrap{display:block;margin-bottom:20px}
     .video-wrap video{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
 
-    /* === GUTTERS on narrow screens === */
-    @media (max-width: 1020px){
+    /* === GUTTERS === */
+    @media (max-width:1020px){
       .hero,
       .card,
       footer,
@@ -90,7 +146,7 @@
     textarea{min-height:110px;resize:vertical}
 
     fieldset{margin:0;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-    legend{font-weight:700;color:#1a1a1a}
+    legend{font-weight:700;color:var(--text)}
     .options{display:grid;gap:10px;grid-template-columns:1fr}
     @media(min-width:640px){.options{grid-template-columns:1fr 1fr}}
     .option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
@@ -124,7 +180,7 @@
     <p>Upload contracts, understand them clearly, detect risks – ContractSpy brings legal precision into plain language.</p>
   </section>
 
-  <!-- First card: Video + Demo button -->
+  <!-- Video + Demo Card -->
   <section class="card">
     <h3>ContractSpy in 60 seconds</h3>
     <div class="video-wrap">
@@ -135,6 +191,67 @@
     </div>
     <a class="btn" href="https://contractspy.github.io/ContractSpyDemoEn/">Go to Demo</a>
   </section>
+
+ <!-- Pricing Card -->
+<section class="card">
+  <h3>Choose Your ContractSpy Plan</h3>
+  <p class="muted">
+    Start small or secure the full worry-free protection – you can test both plans
+    for 1 month for free and save 50% afterwards.
+  </p>
+
+  <div class="pricing" aria-label="Subscription plans">
+    <!-- Starter (Basic) -->
+    <article class="plan">
+      <div class="plan-header">
+        <div>
+          <div class="plan-name">Starter <span class="plan-meta">(Basic)</span></div>
+          <div class="plan-tag" style="visibility:hidden;">Placeholder</div>
+        </div>
+        <div class="plan-price">€3.99 <span class="plan-meta">/ month</span></div>
+      </div>
+
+      <div class="plan-section">
+        <p class="plan-feature">5 Checks &amp; Basic Protection</p>
+        <p class="plan-meta">
+          Perfect if you want to try ContractSpy and keep a few key contracts stored in one place, 
+          neatly organized and reliably checked.
+        </p>
+      </div>
+
+      <div class="plan-section plan-cta">
+        <a class="btn block" href="#leadForm">
+          Request access – test for 1 month for free, then save 50%
+        </a>
+      </div>
+    </article>
+
+    <!-- Sorglos (Premium) -->
+    <article class="plan">
+      <div class="plan-header">
+        <div>
+          <div class="plan-name">Worry-Free <span class="plan-meta">(Premium)</span></div>
+          <div class="plan-tag">Recommended</div>
+        </div>
+        <div class="plan-price">€7.99 <span class="plan-meta">/ month</span></div>
+      </div>
+
+      <div class="plan-section">
+        <p class="plan-feature">Unlimited + Deadline Reminder</p>
+        <p class="plan-meta">
+          For anyone who wants to keep all contracts conveniently in one place with automatic reminders 
+          and the ability to request information at any time.
+        </p>
+      </div>
+
+      <div class="plan-section plan-cta">
+        <a class="btn block" href="#leadForm">
+          Request access – test for 1 month for free, then save 50%
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
 
   <!-- Form -->
   <section class="card">
@@ -182,9 +299,6 @@
   </footer>
 
   <script>
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
     const form = document.getElementById('leadForm');
     const msg = document.getElementById('formMsg');
     const btn = document.getElementById('submitBtn');
